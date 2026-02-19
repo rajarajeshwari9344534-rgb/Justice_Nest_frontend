@@ -1,16 +1,26 @@
 import BASE_URL from "./config.js";
 
-
 let currentChatPartnerId = null;
 let currentChatPartnerName = "";
-let currentUserRole = localStorage.getItem("user_role");
-if (currentUserRole === "users" || !currentUserRole) currentUserRole = localStorage.getItem("role") || "user";
+let currentUserRole = localStorage.getItem("user_role") || localStorage.getItem("role") || "user";
+if (currentUserRole === "users") currentUserRole = "user";
 
 let currentUserId = localStorage.getItem("user_id");
 let pollingInterval = null;
 let editingMessageId = null;
 
 console.log("Chat system initialized:", { currentUserRole, currentUserId });
+
+// Immediate visual confirmation that script is running
+const listElement = document.getElementById("conversations-list");
+if (listElement) {
+    if (window.location.protocol === 'file:') {
+        listElement.innerHTML = "<p class='error' style='background:#fee; padding:10px; border-radius:8px;'>⚠️ <b>CRITICAL ERROR:</b> You opened the file directly from a folder. This blocks the chat from working. <br><br>Please follow the command I sent earlier to run the <b>python server</b> and open <b>http://localhost:5500</b>.</p>";
+        console.error("Script blocked by file:// protocol. Use a server (e.g. VS Code Live Server or python -m http.server)");
+    } else {
+        listElement.innerHTML = "<p class='loading'>Checking messages...</p>";
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     checkBackend(); // Initial check
@@ -30,23 +40,36 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     loadConversations();
-
     setInterval(loadConversations, 10000);
 });
 
 async function loadConversations() {
     try {
         const token = localStorage.getItem("access_token");
-        const res = await fetch(`${BASE_URL}/messages/conversations/${currentUserRole}/${currentUserId}`, {
+        const list = document.getElementById("conversations-list");
+        if (!list) return;
+
+        const url = `${BASE_URL}/messages/conversations/${currentUserRole}/${currentUserId}`;
+        console.log("Fetching from:", url);
+
+        const res = await fetch(url, {
             headers: { "Authorization": `Bearer ${token}` }
         });
-        const data = await res.json();
+        console.log("Response status:", res.status);
 
-        const list = document.getElementById("conversations-list");
+        if (!res.ok) {
+            console.error("Server error:", res.status);
+            list.innerHTML = "<p class='error'>Error loading conversations.</p>";
+            return;
+        }
+
+        const data = await res.json();
+        console.log("Conversations raw data from server:", data);
         list.innerHTML = "";
 
-        if (data.length === 0) {
-            list.innerHTML = "<p class='loading'>No conversations yet.</p>";
+        if (!Array.isArray(data) || data.length === 0) {
+            console.warn("No conversations found for this user.");
+            list.innerHTML = "<p class='loading'>No message history found. Start a chat from 'Find Lawyers' page.</p>";
             return;
         }
 
@@ -64,6 +87,8 @@ async function loadConversations() {
         });
     } catch (e) {
         console.error("Failed to load conversations:", e);
+        const list = document.getElementById("conversations-list");
+        if (list) list.innerHTML = "<p class='error'>Connection error.</p>";
     }
 }
 
@@ -74,7 +99,6 @@ function startChat(partnerId, name = null) {
     if (!name) {
         const items = document.querySelectorAll('.conversation-item');
         items.forEach(item => {
-            // This is a bit hacky, but helps if we open via URL
             if (item.onclick.toString().includes(partnerId)) {
                 name = item.querySelector('h4').innerText;
             }
@@ -110,7 +134,11 @@ async function fetchMessages() {
         const res = await fetch(`${BASE_URL}/messages/${userId}/${lawyerId}`, {
             headers: { "Authorization": `Bearer ${token}` }
         });
+
+        if (!res.ok) return;
+
         const messages = await res.json();
+        if (!Array.isArray(messages)) return;
 
         const history = document.getElementById("chat-history");
         const isAtBottom = history.scrollHeight - history.scrollTop <= history.clientHeight + 100;
@@ -122,7 +150,6 @@ async function fetchMessages() {
             const bubble = document.createElement("div");
             bubble.className = `message-bubble ${isMine ? 'mine' : 'theirs'}`;
 
-            // Ensure the date is interpreted as UTC by appending 'Z' if missing
             const createdAt = msg.created_at.includes('Z') ? msg.created_at : msg.created_at.replace(' ', 'T') + 'Z';
             const date = new Date(createdAt);
             const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true });
@@ -152,7 +179,7 @@ async function fetchMessages() {
 }
 
 async function handleSendMessage(event) {
-    event.preventDefault();
+    if (event) event.preventDefault();
     if (!currentChatPartnerId) {
         alert("Please select a conversation first.");
         return;
@@ -162,15 +189,8 @@ async function handleSendMessage(event) {
     const content = input.value.trim();
     if (!content) return;
 
-    // Validate IDs
     const userId = currentUserRole === "user" ? parseInt(currentUserId) : currentChatPartnerId;
     const lawyerId = currentUserRole === "lawyer" ? parseInt(currentUserId) : currentChatPartnerId;
-
-    if (!userId || !lawyerId || isNaN(userId) || isNaN(lawyerId)) {
-        alert("Authentication error: Please log in again.");
-        window.location.href = "login.html";
-        return;
-    }
 
     try {
         const token = localStorage.getItem("access_token");
@@ -198,7 +218,6 @@ async function handleSendMessage(event) {
         }
     } catch (e) {
         console.error("Error sending message:", e);
-        alert("Network error: Could not reach server. Check if backend is running.");
     }
 }
 
@@ -209,15 +228,13 @@ function toggleMessageMenu(event, id) {
         if (menu.id !== `menu-${id}`) menu.style.display = 'none';
     });
     const menu = document.getElementById(`menu-${id}`);
-    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    if (menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
 
-    // Close on click outside
     document.addEventListener('click', () => {
-        menu.style.display = 'none';
+        if (menu) menu.style.display = 'none';
     }, { once: true });
 }
 
-// Edit & Delete Logic
 function openEditModal(id, content) {
     editingMessageId = id;
     document.getElementById("edit-input").value = content;
@@ -275,12 +292,9 @@ async function checkBackend() {
         const res = await fetch(`${BASE_URL}/lawyers/test`);
         if (res.ok) {
             console.log("✅ Backend is reachable");
-        } else {
-            console.warn("⚠️ Backend responded with error:", res.status);
         }
     } catch (e) {
-        console.error("❌ Backend is UNREACHABLE:", e);
-        alert("CRITICAL ERROR: The Backend Server is not running. Please start the server (python main.py) and refresh.");
+        console.error("❌ Backend is UNREACHABLE");
     }
 }
 
@@ -289,6 +303,7 @@ function logout() {
     window.location.href = "login.html";
 }
 
+// Global exports for HTML handlers
 window.handleSendMessage = handleSendMessage;
 window.toggleMessageMenu = toggleMessageMenu;
 window.openEditModal = openEditModal;
@@ -297,3 +312,4 @@ window.submitEdit = submitEdit;
 window.deleteMessage = deleteMessage;
 window.logout = logout;
 window.startChat = startChat;
+window.loadConversations = loadConversations;

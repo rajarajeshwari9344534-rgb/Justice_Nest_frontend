@@ -13,25 +13,29 @@ async function fetchProfile() {
 
     const token = localStorage.getItem("access_token");
     try {
+        console.log("Fetching profile for lawyer:", lawyer_id);
         const response = await fetch(`${BASE_URL}/lawyers/${lawyer_id}`, {
             headers: { "Authorization": `Bearer ${token}` }
         });
         const data = await response.json();
+        console.log("Profile data received:", data);
 
         if (response.ok) {
-            document.getElementById("name").value = data.name;
-            document.getElementById("email").value = data.email;
-            document.getElementById("phone_number").value = data.phone_number;
-            document.getElementById("city").value = data.city;
-            document.getElementById("specialization").value = data.specialization;
-            document.getElementById("years_of_experience").value = data.years_of_experience;
-            document.getElementById("fees_range").value = data.fees_range;
+            document.getElementById("name").value = data.name || "";
+            document.getElementById("email").value = data.email || "";
+            document.getElementById("phone_number").value = data.phone_number || "";
+            document.getElementById("city").value = data.city || "";
+            document.getElementById("specialization").value = data.specialization || "";
+            document.getElementById("years_of_experience").value = data.years_of_experience || "";
+            document.getElementById("fees_range").value = data.fees_range || "";
             document.getElementById("current-photo").src = data.photo_url || "https://via.placeholder.com/100";
         } else {
-            alert("Failed to fetch profile");
+            console.error("Failed to fetch profile:", data);
+            alert("Failed to fetch profile: " + (data.detail || "Unknown error"));
         }
     } catch (e) {
-        console.error(e);
+        console.error("Fetch profile error:", e);
+        alert("Connection error while fetching profile.");
     }
 }
 
@@ -70,16 +74,6 @@ document.getElementById("profile-form").addEventListener("submit", async (e) => 
     submitBtn.disabled = true;
     submitBtn.innerText = "Saving Changes...";
 
-    // Remove empty photo if not selected (FormData handles file input automatically, sending empty file object if not selected)
-    // Backend expects 'photo' as UploadFile = File(None). If file is empty, it might be an issue?
-    // Let's check backend. `photo: Optional[UploadFile] = File(None)`.
-    // If I send an empty file, `photo` might not be None but an empty object.
-    // Python FastAPI `UploadFile` usually handles empty if optional properly, or I should omit it.
-    // In JS FormData, if input type file is empty, it sends a file with name "" and size 0.
-    // It's safer to delete it if size is 0, but FormData manipulation is tricky.
-    // Let's rely on backend checking or just try.
-    // Or I can reconstruct FormData.
-
     const cleanData = new FormData();
     cleanData.append("name", document.getElementById("name").value);
     cleanData.append("phone_number", document.getElementById("phone_number").value);
@@ -95,25 +89,28 @@ document.getElementById("profile-form").addEventListener("submit", async (e) => 
 
     try {
         const token = localStorage.getItem("access_token");
+        console.log("Sending update request to:", `${BASE_URL}/lawyers/${lawyer_id}`);
+
         const response = await fetch(`${BASE_URL}/lawyers/${lawyer_id}`, {
             method: "PUT",
             headers: { "Authorization": `Bearer ${token}` },
             body: cleanData
         });
         const res = await response.json();
+        console.log("Update response:", res);
 
         if (response.ok) {
             alert("Profile Updated Successfully!");
             location.reload();
         } else {
-            alert(res.detail || "Update Failed");
+            alert("Update Failed: " + (res.detail || "Check your data or backend logs"));
             isSubmitting = false;
             submitBtn.disabled = false;
             submitBtn.innerText = originalBtnText;
         }
     } catch (e) {
-        console.error(e);
-        alert("Server Error");
+        console.error("Profile update error:", e);
+        alert("Server Error: Check if the backend is running.");
         isSubmitting = false;
         submitBtn.disabled = false;
         submitBtn.innerText = originalBtnText;

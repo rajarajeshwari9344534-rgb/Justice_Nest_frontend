@@ -5,7 +5,8 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   font-family: "Poppins", "Inter", system-ui, sans-serif;
   color: #1e293b;
@@ -47,7 +48,7 @@ html, body {
   font-weight: 700;
   font-size: 20px;
   color: #0a2540;
-  }
+}
 
 /* Nav */
 .primary-nav {
@@ -77,15 +78,15 @@ html, body {
   transition: all 0.3s ease;
 }
 
-.btn{
+.btn {
   background: linear-gradient(90deg, #0a63d9, #0b73ff);
   color: #fff;
-  box-shadow: 0 6px 14px rgba(11,115,255,0.25);
+  box-shadow: 0 6px 14px rgba(11, 115, 255, 0.25);
 }
 
 .btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(11,115,255,0.35);
+  box-shadow: 0 8px 20px rgba(11, 115, 255, 0.35);
 }
 
 /* ========== HERO SECTION ========== */
@@ -238,13 +239,15 @@ html, body {
 
 /* ========== RIGHTS SECTION ========== */
 
-.section-title{
+.section-title {
   text-align: center;
 }
-.section-sub{
+
+.section-sub {
   text-align: center;
   font-size: larger;
 }
+
 .rights {
   background: #f4f5f7;
   padding: 90px 0;
@@ -270,8 +273,8 @@ html, body {
 .law-card:hover {
   transform: translateY(-6px);
 }
- 
-.more-link{
+
+.more-link {
   text-decoration: none;
   text-align: center;
   font-size: large;

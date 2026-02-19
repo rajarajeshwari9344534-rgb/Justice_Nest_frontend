@@ -35,12 +35,14 @@
 
   <main class="chat-container">
     <aside class="conversations-sidebar">
-      <div class="sidebar-header">
+      <div class="sidebar-header" style="display: flex; justify-content: space-between; align-items: center;">
         <h3>Conversations</h3>
+        <button onclick="loadConversations()"
+          style="background: none; border: 1px solid var(--border-color); cursor: pointer; border-radius: 4px; padding: 2px 8px; font-size: 0.7rem;">Refresh</button>
       </div>
       <div id="conversations-list" class="conversations-list">
         <!-- Conversations will be loaded here -->
-        <p class="loading">Loading chats...</p>
+        <p class="loading">Loading script...</p>
       </div>
     </aside>
 
