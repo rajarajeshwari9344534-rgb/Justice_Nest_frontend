@@ -1,4 +1,4 @@
-// const BASE_URL = "https://justice-nest-backend.onrender.com";
+
 import BASE_URL from "./config.js";
 
 document.addEventListener("DOMContentLoaded", () => {
