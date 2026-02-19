@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | Justice Nest</title>
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+
+<body>
+
+  <div class="auth-page-wrapper">
+    <div class="auth-card">
+      <a href="../index.html" class="brand" style="justify-content: center; margin-bottom: 32px;">
+        <div class="logo-mark">⚖️</div>
+        <div class="brand-title">Justice Nest</div>
+      </a>
+
+      <h2>Welcome Back</h2>
+      <p>Log in to manage your cases and access support.</p>
+
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="role">Log in as</label>
+          <select id="role" name="role" required>
+            <option value="user">Citizen / User</option>
+            <option value="lawyer">Legal Professional</option>
+            <option value="admin">Administrator</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email or Username</label>
+          <input type="text" id="email" name="email" placeholder="Enter email or username" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Log In</button>
+
+        <div class="auth-form-footer">
+          New to Justice Nest? <a href="signup_choice.html">Create an account</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="../js/login.js"></script>
+</body>
+
+</html>

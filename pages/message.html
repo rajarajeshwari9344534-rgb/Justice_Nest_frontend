@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Messages | Justice Nest</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/message.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand">
+        <div class="logo-mark">⚖️</div>
+        <div class="brand-text">
+          <div class="brand-title">Justice Nest</div>
+        </div>
+      </a>
+
+      <div id="active-chat-partner" class="chat-partner-info"
+        style="display: flex; flex-direction: column; align-items: center;">
+        <h2 id="partner-name" style="font-size: 1.1rem; margin-bottom: 2px;">Select a conversation</h2>
+        <p id="partner-status" style="font-size: 0.8rem; color: var(--text-muted);">Offline</p>
+      </div>
+
+      <div class="nav-actions">
+        <button class="btn btn-outline" onclick="logout()">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="chat-container">
+    <aside class="conversations-sidebar">
+      <div class="sidebar-header">
+        <h3>Conversations</h3>
+      </div>
+      <div id="conversations-list" class="conversations-list">
+        <!-- Conversations will be loaded here -->
+        <p class="loading">Loading chats...</p>
+      </div>
+    </aside>
+
+    <section class="chat-main">
+      <div id="chat-history" class="chat-history">
+        <div class="welcome-screen">
+          <span>💬</span>
+          <h2>Welcome to Justice Nest Chat</h2>
+          <p>Select a message to start or continue your legal consultation.</p>
+        </div>
+      </div>
+
+      <div class="chat-input-area">
+        <form id="message-form" class="message-form" onsubmit="handleSendMessage(event)">
+          <input type="text" id="message-input" placeholder="Type your message here..." required autocomplete="off">
+          <button type="submit" id="send-btn">Send</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Edit Modal -->
+  <div id="edit-modal" class="modal">
+    <div class="modal-content">
+      <h3>Edit Message</h3>
+      <textarea id="edit-input"></textarea>
+      <div class="modal-actions">
+        <button onclick="closeEditModal()">Cancel</button>
+        <button onclick="submitEdit()" class="save-btn">Save Changes</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../js/message.js"></script>
+  <script src="../js/auth_check.js"></script>
+</body>
+
+</html>

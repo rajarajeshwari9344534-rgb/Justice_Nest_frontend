@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account | Justice Nest</title>
+  <link rel="stylesheet" href="../css/global.css">
+</head>
+
+<body>
+
+  <div class="auth-page-wrapper">
+    <div class="auth-card">
+      <a href="../index.html" class="brand" style="justify-content: center; margin-bottom: 32px;">
+        <div class="logo-mark">⚖️</div>
+        <div class="brand-title">Justice Nest</div>
+      </a>
+
+      <h2>Create Your Account</h2>
+      <p>Join us in the fight for justice and equality.</p>
+
+      <form id="signupForm" class="auth-form">
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input type="text" id="fullname" placeholder="e.g. John Doe" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="e.g. name@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" placeholder="••••••••" required>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" placeholder="••••••••" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Create Account</button>
+
+        <div class="auth-form-footer">
+          Already have an account? <a href="login.html">Log in</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="../js/user_signup.js"></script>
+</body>
+
+</html>

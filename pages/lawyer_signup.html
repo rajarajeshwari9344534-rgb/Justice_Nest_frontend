@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>Professional Registration | Justice Nest</title>
+       <link rel="stylesheet" href="../css/global.css">
+       <style>
+              .lawyer-signup-wrapper {
+                     min-height: 100vh;
+                     background: #f8fafc;
+                     padding: 40px 20px;
+              }
+
+              .lawyer-signup-card {
+                     background: white;
+                     padding: 40px;
+                     border-radius: 20px;
+                     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+                     max-width: 700px;
+                     margin: 0 auto;
+              }
+
+              .lawyer-signup-card h2 {
+                     text-align: center;
+                     margin-bottom: 8px;
+                     font-size: 28px;
+              }
+
+              .lawyer-signup-card>p {
+                     text-align: center;
+                     color: #64748b;
+                     margin-bottom: 32px;
+                     font-size: 15px;
+              }
+       </style>
+</head>
+
+<body>
+
+       <div class="lawyer-signup-wrapper">
+              <div class="lawyer-signup-card">
+                     <a href="../index.html" class="brand" style="justify-content: center; margin-bottom: 32px;">
+                            <div class="logo-mark">⚖️</div>
+                            <div class="brand-title">Justice Nest</div>
+                     </a>
+
+                     <h2>Professional Registration</h2>
+                     <p>Join our network of verified legal professionals.</p>
+
+                     <form id="lawyerSignupForm" class="auth-form">
+
+                            <!-- PERSONAL INFORMATION -->
+                            <div class="form-section-title">Personal Information</div>
+
+                            <div class="form-group">
+                                   <label for="name">Full Name</label>
+                                   <input type="text" name="name" id="name" placeholder="e.g. Adv. Priya Sharma"
+                                          required minlength="3">
+                            </div>
+
+                            <div class="form-grid">
+                                   <div class="form-group">
+                                          <label for="email">Email Address</label>
+                                          <input type="email" name="email" id="email" placeholder="name@example.com"
+                                                 required>
+                                   </div>
+
+                                   <div class="form-group">
+                                          <label for="phone_number">Phone Number</label>
+                                          <input type="tel" name="phone_number" id="phone_number"
+                                                 placeholder="9876543210" required pattern="[6-9][0-9]{9}"
+                                                 maxlength="10" minlength="10">
+                                   </div>
+                            </div>
+
+                            <div class="form-grid">
+                                   <div class="form-group">
+                                          <label for="city">City</label>
+                                          <input type="text" name="city" id="city" placeholder="e.g. Mumbai" required
+                                                 minlength="2">
+                                   </div>
+
+                                   <div class="form-group">
+                                          <label for="state">State</label>
+                                          <input type="text" name="state" id="state" placeholder="e.g. Maharashtra"
+                                                 required minlength="2">
+                                   </div>
+                            </div>
+
+                            <div class="form-group">
+                                   <label for="gender">Gender</label>
+                                   <select name="gender" id="gender" required>
+                                          <option value="" disabled selected>Select your gender</option>
+                                          <option value="Male">Male</option>
+                                          <option value="Female">Female</option>
+                                          <option value="Other">Other</option>
+                                   </select>
+                            </div>
+
+                            <!-- PROFESSIONAL DETAILS -->
+                            <div class="form-section-title">Professional Details</div>
+
+                            <div class="form-group">
+                                   <label for="specialization">Area of Specialization</label>
+                                   <input type="text" name="specialization" id="specialization"
+                                          placeholder="e.g. Dowry Law, Family Law" required minlength="3">
+                            </div>
+
+                            <div class="form-grid">
+                                   <div class="form-group">
+                                          <label for="years_of_experience">Years of Experience</label>
+                                          <input type="number" name="years_of_experience" id="years_of_experience"
+                                                 placeholder="e.g. 10" required min="1">
+                                   </div>
+
+                                   <div class="form-group">
+                                          <label for="fees_range">Fee Range</label>
+                                          <input type="text" name="fees_range" id="fees_range"
+                                                 placeholder="₹3000 - ₹7000" required minlength="2">
+                                   </div>
+                            </div>
+
+                            <!-- CREDENTIALS -->
+                            <div class="form-section-title">Credentials & Security</div>
+
+                            <div class="form-group">
+                                   <label for="id_proof">ID Proof (Bar Council Certificate / License)</label>
+                                   <input type="file" name="id_proof" id="id_proof" accept=".pdf,.jpg,.jpeg,.png"
+                                          required>
+                            </div>
+
+                            <div class="form-group">
+                                   <label for="photo">Professional Photo</label>
+                                   <input type="file" name="photo" id="photo" accept=".jpg,.jpeg,.png" required>
+                            </div>
+
+                            <div class="form-group">
+                                   <label for="password">Password</label>
+                                   <input type="password" name="password" id="password" placeholder="••••••••" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Submit for
+                                   Verification</button>
+
+                            <div class="auth-form-footer">
+                                   Already registered? <a href="login.html">Log in</a>
+                            </div>
+                     </form>
+              </div>
+       </div>
+
+       <script type="module" src="../js/lawyer_signup.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Justice Nest – Find Lawyers</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/lawyer.css">
+</head>
+
+<body>
+
+  <!-- ====== NAVBAR ====== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand">
+        <div class="logo-mark">⚖️</div>
+        <div class="brand-text">
+          <div class="brand-title">Justice Nest</div>
+        </div>
+      </a>
+
+      <nav class="primary-nav" aria-label="Main">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link active" href="../pages/lawyer.html">Find Lawyers</a>
+        <a class="nav-link" href="../pages/list.html">My Complaint</a>
+        <a class="nav-link" href="../pages/message.html">Messages</a>
+        <a class="nav-link" href="../pages/about.html">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-outline" href="../pages/login.html">Login</a>
+        <a class="btn btn-primary" href="../pages/complaint.html">Register Complaint</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== HERO SECTION ====== -->
+  <section class="hero-section">
+    <div class="container">
+      <h1>Find Legal Support</h1>
+      <p>
+        Connect with verified, compassionate lawyers who specialize in dowry and domestic
+        violence cases. Affordable and accessible legal help is here.
+      </p>
+    </div>
+  </section>
+
+  <!-- ====== SEARCH & FILTER SECTION ====== -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-card">
+        <div class="filter-row main-search">
+          <div class="input-group search-box">
+            <span class="input-icon">🔍</span>
+            <input type="text" id="search-input" placeholder="Search by name or specialization...">
+          </div>
+        </div>
+
+        <div class="filter-row secondary-filters">
+          <div class="input-group">
+            <select id="spec-filter">
+              <option value="">All Specializations</option>
+              <option value="Dowry">Dowry Cases</option>
+              <option value="Domestic Violence">Domestic Violence</option>
+              <option value="Family Law">Family Law</option>
+              <option value="Property Law">Property Law</option>
+              <option value="Criminal Law">Criminal Law</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <input type="text" id="city-filter" placeholder="Filter by City">
+          </div>
+
+          <div class="input-group">
+            <input type="text" id="state-filter" placeholder="Filter by State">
+          </div>
+
+          <div class="input-group">
+            <select id="gender-filter">
+              <option value="">All Genders</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="filter-row numeric-filters">
+          <div class="input-group">
+            <label>Min Experience (Years)</label>
+            <input type="number" id="exp-filter" min="0" placeholder="0">
+          </div>
+
+          <div class="input-group">
+            <label>Max Fees (₹)</label>
+            <input type="number" id="fees-filter" min="0" placeholder="No Limit">
+          </div>
+
+          <div class="input-group">
+            <label>Search by Phone</label>
+            <input type="tel" id="phone-filter" placeholder="Phone number">
+          </div>
+        </div>
+
+        <div class="filter-actions">
+          <button class="btn btn-primary" onclick="applyFilters()">Apply Filters</button>
+          <button class="btn btn-outline" onclick="resetFilters()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== LAWYER CARDS GRID ====== -->
+  <main class="container">
+    <div class="lawyer-grid">
+      <!-- Dynamic cards will be loaded here -->
+    </div>
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>Justice Nest</h3>
+        <p>A safe digital space for families affected by the dowry system. Justice, equality, and hope for all.</p>
+      </div>
+
+      <div>
+        <h3>Quick Links</h3>
+        <a href="../index.html">Home</a><br>
+        <a href="../pages/stories.html">Stories</a><br>
+        <a href="../pages/lawyer.html">Find Lawyers</a><br>
+        <a href="../pages/law.html">Laws & Rights</a>
+      </div>
+
+      <div>
+        <h3>Support</h3>
+        <a href="../pages/about.html">About Us</a><br>
+        <a href="#">Privacy Policy</a><br>
+        <a href="#">Contact Us</a>
+      </div>
+
+      <div>
+        <h3>Connect With Us</h3>
+        <div class="socials">🔵 🔷 🔸 ✉️</div>
+        <p>support@justicenest.org</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2025 Justice Nest. All rights reserved. Fighting for fairness, equality, and justice.
+    </div>
+  </footer>
+  <script type="module" src="../js/find_lawyers.js"></script>
+  <script src="../js/auth_check.js"></script>
+</body>
+
+</html>

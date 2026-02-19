@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complaint List | Justice Nest</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <link rel="stylesheet" href="../css/list.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand">
+        <div class="logo-mark">⚖️</div>
+        <div class="brand-text">
+          <div class="brand-title">Justice Nest</div>
+        </div>
+      </a>
+
+      <nav class="primary-nav" aria-label="Main">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link" href="../pages/lawyer.html">Find Lawyers</a>
+        <a class="nav-link active" href="../pages/list.html">My Complaint</a>
+        <a class="nav-link" href="../pages/message.html">Messages</a>
+        <a class="nav-link" href="../pages/about.html">About</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a class="btn btn-outline" href="../pages/login.html">Login</a>
+        <a class="btn btn-primary" href="../pages/complaint.html">Register Complaint</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-section">
+    <div class="container">
+      <h1>My Complaints</h1>
+      <p>Your submitted complaints are listed below for reference and action.</p>
+    </div>
+  </section>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="page-wrapper">
+    <h2 class="page-title">My Complaints</h2>
+
+    <div class="complaint-container">
+      <p>Loading your complaints...</p>
+    </div>
+  </main>
+
+  <!-- EDIT MODAL -->
+  <div id="edit-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Edit Complaint</h2>
+      <form id="edit-form" onsubmit="handleEditSubmit(event)">
+        <input type="hidden" id="edit-id">
+        <label>Name</label>
+        <input type="text" id="edit-name" required>
+        <label>City</label>
+        <input type="text" id="edit-city" required>
+        <label>State</label>
+        <input type="text" id="edit-state" required>
+        <label>Details</label>
+        <textarea id="edit-details" required
+          style="width: 100%; height: 100px; padding: 10px; border-radius: 6px;"></textarea>
+        <label>Attachment (Optional)</label>
+        <input type="file" id="edit-file" accept=".pdf,.doc,.docx,.jpg,.png" style="width: 100%; margin-top: 10px;">
+        <button type="submit" class="btn" style="width: 100%; margin-top: 20px;">Save Changes</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="../js/user_complaints.js"></script>
+
+  <script src="../js/auth_check.js"></script>
+</body>
+
+</html>

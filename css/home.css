@@ -1,0 +1,314 @@
+/* ================================
+   Justice Nest — Complaint Page CSS
+================================ */
+
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+/* BASE */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: #f5f6f7;
+  color: #222;
+  line-height: 1.5;
+}
+
+/* LINKS & BUTTON RESET */
+a {
+  text-decoration: none;
+  color: inherit;
+
+}
+
+button {
+  font: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+/* ================================
+   NAVBAR
+================================ */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #ffffffcc;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: auto;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-mark {
+  font-size: 28px;
+  color: #0a63d9;
+  font-weight: 800;
+}
+
+.brand-title {
+  font-weight: 700;
+  font-size: 20px;
+  color: #0a2540;
+}
+
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-link {
+  color: #334155;
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: #0b73ff;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #0a63d9, #0b73ff);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-btn {
+  padding: 10px 22px;
+  border-radius: 30px;
+  font-weight: 600;
+  background: linear-gradient(90deg, #0a63d9, #0b73ff);
+  color: #fff;
+  box-shadow: 0 6px 14px rgba(11, 115, 255, 0.25);
+  transition: 0.3s ease;
+}
+
+.nav-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(11, 115, 255, 0.35);
+}
+
+h2 {
+  margin-left: 50px;
+  color: #1e3a8a;
+  margin-bottom: 20px;
+}
+
+/* Container */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  margin: 20px 0;
+}
+
+/* Complaint Card */
+.complaint-card {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #edf2f7;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.complaint-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.complaint-card h3 {
+  margin: 0 0 12px 0;
+  color: #0a2540;
+  font-size: 20px;
+}
+
+.complaint-card p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #4a5568;
+}
+
+.description-preview {
+  font-size: 14px;
+  color: #718096;
+  font-style: italic;
+  margin: 10px 0;
+  background: #f7fafc;
+  padding: 8px;
+  border-radius: 6px;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+
+/* Buttons */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.btn {
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+  background: #2563eb;
+  color: white;
+}
+
+.btn:hover {
+  background: #1e40af;
+}
+
+.accept {
+  background: #02a53b;
+}
+
+.reject {
+  background: #ef4444;
+}
+
+.accept:hover {
+  background: #96f8bd;
+}
+
+.reject:hover {
+  background: #dc2626;
+}
+
+.dashboard-grid {
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 40px;
+}
+
+.section-header {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0a2540;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom: 3px solid #0b73ff;
+  display: inline-block;
+}
+
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: slideDown 0.3s ease;
+  word-break: break-word;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#modal-body p {
+  margin: 15px 0;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+#modal-body b {
+  color: #0a2540;
+}
+
+/* Detail Page */
+.detail-box {
+  background: white;
+  padding: 25px;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.15);
+  border-top: 6px solid #2563eb;
+}
+
+.detail-box p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+
+p {
+  margin-left: 50px;
+}
+
+.name {
+  margin-left: 50px;
+}

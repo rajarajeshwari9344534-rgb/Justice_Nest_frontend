@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Cases | Justice Nest</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+
+<body>
+    <!-- ====== NAVBAR ====== -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="home.html" class="brand">
+                <div class="logo-mark">⚖️</div>
+                <div class="brand-text">
+                    <div class="brand-title">Justice Nest</div>
+                    <div class="brand-subtitle" style="font-size: 0.7em; color: var(--text-muted); font-weight: 600;">My
+                        Cases</div>
+                </div>
+            </a>
+
+            <nav class="primary-nav" aria-label="Main">
+                <a class="nav-link" href="home.html">Dashboard</a>
+                <a class="nav-link" href="message.html">Messages</a>
+                <a class="nav-link active" href="my_cases.html">My Cases</a>
+                <a class="nav-link" href="lawyer_profile.html">My Profile</a>
+            </nav>
+
+            <div class="nav-actions">
+                <a class="btn btn-outline" href="../index.html" onclick="localStorage.clear()">Logout</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="dashboard-grid">
+        <h2 class="section-header">My Accepted & Resolved Cases</h2>
+        <div id="my-cases-container" class="card-container">
+            <p>Loading your cases...</p>
+        </div>
+    </div>
+
+    <!-- ====== MODAL FOR DETAILS ====== -->
+    <div id="details-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Case Details</h2>
+            <div id="modal-body">
+                <!-- Details injected here -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/my_cases.js"></script>
+    <script src="../js/auth_check.js"></script>
+</body>
+
+</html>

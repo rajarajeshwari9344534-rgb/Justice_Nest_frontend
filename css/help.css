@@ -1,0 +1,153 @@
+/* index */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+  .hero-right img {
+    width: 90%;
+    margin: auto;
+  }
+  .primary-nav {
+    display: none;
+  }
+}
+
+/* stories */
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .share-story h2 {
+    font-size: 24px;
+  }
+
+  .share-story p {
+    font-size: 15px;
+  }
+}
+
+/* message */
+
+
+/* Animation */
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* lawyer */
+
+/* RESPONSIVE */
+@media (max-width: 992px) {
+  .hero { padding: 48px 16px; }
+  .nav-content { height: 64px; }
+}
+@media (max-width: 768px) {
+  nav { display: none; }
+  .hero h1 { font-size: 28px; }
+  .stories { gap: 16px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .avatar { width: 64px; height: 64px; transform: translateY(14px); }
+}
+@media (max-width: 420px) {
+  .logo { font-size: 18px; }
+  .btn-primary { padding: 8px 14px; }
+  .avatar { width: 56px; height: 56px; transform: translateY(12px); }
+}
+
+
+
+/* complaintmgs */
+/* ====== ANIMATIONS ====== */
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+
+/* complaint  */
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .footer-content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero h1 {
+    font-size: 30px;
+  }
+
+  .two-col {
+    flex-direction: column;
+  }
+}
+
+
+
+/* about.cc */
+
+
+
+/* ========================================
+   RESPONSIVE DESIGN
+======================================== */
+@media (max-width: 900px) {
+  .story-grid {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .offer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+}

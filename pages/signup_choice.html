@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Justice Nest</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <style>
+        .choice-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8fafc;
+            padding: 20px;
+        }
+
+        .choice-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .choice-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 40px;
+        }
+
+        .choice-option {
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .choice-option:hover {
+            border-color: #0b73ff;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(11, 115, 255, 0.1);
+        }
+
+        .choice-icon {
+            font-size: 48px;
+        }
+
+        .choice-option h3 {
+            font-size: 20px;
+            color: #0a2540;
+            margin: 0;
+        }
+
+        .choice-option p {
+            color: #64748b;
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 32px;
+            color: #64748b;
+            text-decoration: none;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="choice-page">
+        <div class="choice-card">
+            <h1 style="font-size: 32px; color: #0a2540;">Choose Your Account Type</h1>
+            <p style="color: #64748b;">Join us in our mission to ensure justice and equality for all.</p>
+
+            <div class="choice-grid">
+                <a href="sign_up.html" class="choice-option">
+                    <div class="choice-icon">🛡️</div>
+                    <h3>For Citizens</h3>
+                    <p>Report issues, find legal help, and track your cases.</p>
+                </a>
+                <a href="lawyer_signup.html" class="choice-option">
+                    <div class="choice-icon">⚖️</div>
+                    <h3>For Professionals</h3>
+                    <p>Offer your expertise and help fight for justice.</p>
+                </a>
+            </div>
+
+            <a href="../index.html" class="back-link">← Back to Homepage</a>
+        </div>
+    </div>
+</body>
+
+</html>

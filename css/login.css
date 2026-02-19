@@ -1,0 +1,121 @@
+ * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      /* Same soft blue background as signup page */
+      background: linear-gradient(135deg, #cfe9ff, #e6f3ff);
+    }
+
+    .login-container {
+      background-color: #ffffff;
+      padding: 45px 35px;
+      border-radius: 18px;
+      width: 360px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-container:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .login-container h2 {
+      margin-bottom: 25px;
+      color: #1e6091; /* same medium blue */
+      font-weight: 600;
+    }
+
+    .login-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0 18px 0;
+      border: 1px solid #cfd8dc;
+      border-radius: 10px;
+      font-size: 15px;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    .login-container input:focus {
+      border-color: #3a86ff;
+      outline: none;
+      box-shadow: 0 0 5px rgba(58, 134, 255, 0.4);
+    }
+
+    .login-container button {
+      width: 100%;
+      background: #3a86ff;
+      border: none;
+      color: white;
+      padding: 12px;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.2s;
+    }
+
+    .login-container button:hover {
+      background: #2d6cdf;
+      transform: scale(1.02);
+    }
+
+
+    .login-container select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 18px 0;
+    border: 1px solid #cfd8dc;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    color: #555;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+  .login-container select:focus {
+  border-color: #3a86ff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(58, 134, 255, 0.4);
+}
+
+/* Placeholder option style */
+.login-container select option[disabled] {
+  color: #999;
+}
+        
+
+    .signup-link {
+      margin-top: 18px;
+      display: block;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .signup-link a {
+      color: #3a86ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      margin-top: 25px;
+      font-size: 12px;
+      color: #888;
+    }
+    
+  

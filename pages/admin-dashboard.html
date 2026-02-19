@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Verify Lawyers</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+
+<body>
+
+  <header>
+    <h1>⚖️ Admin Dashboard</h1>
+    <a href="#" onclick="handleGlobalLogout()" class="logout">Logout</a>
+  </header>
+
+  <section class="stats-overview">
+    <h2>System Statistics</h2>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <h3 id="stat-total">...</h3>
+        <p>Total Complaints</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="stat-pending">...</h3>
+        <p>Pending Complaints</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="stat-accepted">...</h3>
+        <p>Accepted Cases</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="stat-resolved" class="success-text">...</h3>
+        <p>Resolved Cases</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="stat-lawyers">...</h3>
+        <p>Verified Lawyers</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-top: 40px;">
+    <h2>Pending Lawyer Verifications</h2>
+    <div id="pending-lawyers-container">
+      <p>Loading...</p>
+    </div>
+  </section>
+
+  <script type="module" src="../js/admin.js"></script>
+  <script src="../js/auth_check.js"></script>
+</body>
+
+</html>
