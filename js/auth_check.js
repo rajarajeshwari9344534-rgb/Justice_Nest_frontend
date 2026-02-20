@@ -21,11 +21,12 @@ function updateNavbar() {
 
 
     // 1. Update PRIMARY NAV
-    let navHTML = `<a class="nav-link" href="${rootBase}index.html">Home</a>`;
+    let navHTML = (role === "lawyer") ? "" : `<a class="nav-link" href="${rootBase}index.html">Home</a>`;
 
     if (token) {
         if (role === "lawyer") {
-            navHTML += `
+            // Lawyers don't see the public Home link, they start with Dashboard
+            navHTML = `
                 <a class="nav-link" href="${pagesBase}home.html">Dashboard</a>
                 <a class="nav-link" href="${pagesBase}message.html">Messages</a>
                 <a class="nav-link" href="${pagesBase}my_cases.html">My Cases</a>
