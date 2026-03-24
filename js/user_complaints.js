@@ -174,4 +174,3 @@ window.openEditModal = openEditModal;
 window.closeModal = closeModal;
 window.deleteComplaint = deleteComplaint;
 window.handleEditSubmit = handleEditSubmit;
-

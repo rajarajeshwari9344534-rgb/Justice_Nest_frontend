@@ -28,14 +28,12 @@ function updateNavbar() {
             // Lawyers don't see the public Home link, they start with Dashboard
             navHTML = `
                 <a class="nav-link" href="${pagesBase}home.html">Dashboard</a>
-                <a class="nav-link" href="${pagesBase}message.html">Messages</a>
                 <a class="nav-link" href="${pagesBase}my_cases.html">My Cases</a>
                 <a class="nav-link" href="${pagesBase}lawyer_profile.html">Profile</a>
             `;
         } else if (role === "user") {
             navHTML += `
                 <a class="nav-link" href="${pagesBase}list.html">My Complaints</a>
-                <a class="nav-link" href="${pagesBase}message.html">Messages</a>
                 <a class="nav-link" href="${pagesBase}lawyer.html">Find Lawyers</a>
             `;
         } else if (role === "admin") {

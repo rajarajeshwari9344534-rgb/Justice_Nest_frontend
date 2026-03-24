@@ -47,10 +47,6 @@ function renderLawyers(lawyers) {
               <div class="lawyer-contact-info">
                 <p><strong>📞 Phone:</strong> ${l.phone_number}</p>
               </div>
-
-              <button class="btn btn-primary btn-contact" onclick="sendInquiry(${l.id}, '${l.name}')" style="width: 100%; margin-top: 20px;">
-                💬 Message Lawyer
-              </button>
             </div>
         `;
     container.appendChild(card);
