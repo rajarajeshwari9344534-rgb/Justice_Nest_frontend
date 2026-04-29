@@ -34,7 +34,7 @@ function renderComplaints(list) {
     }
 
     list.sort((a, b) => (a.status === 'resolved' ? 1 : -1)); // Show active ones first
-
+    
     // Store globally
     window.myCasesMap = list;
 

@@ -60,7 +60,7 @@ function lawyerSignup(event) {
       const data = await res.json();
 
       if (!res.ok) {
-        let errorMsg = "Registration failed ❌";
+        let errorMsg = "Registration failed ";
         if (typeof data.detail === "string") {
           errorMsg = data.detail;
         } else if (Array.isArray(data.detail)) {
@@ -81,12 +81,12 @@ function lawyerSignup(event) {
       localStorage.setItem("status", data.status);
       localStorage.setItem("user_role", "lawyer");
 
-      alert("Lawyer registered successfully ✅ Welcome to your dashboard.");
+      alert("Lawyer registered successfully  Welcome to your dashboard.");
       window.location.href = "../pages/home.html";
     })
     .catch((error) => {
       console.error(error);
-      alert("Server error ❌");
+      alert("Server error ");
       isSubmitting = false;
       submitBtn.disabled = false;
       submitBtn.innerText = originalBtnText;
